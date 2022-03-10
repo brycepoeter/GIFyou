@@ -1,20 +1,25 @@
 //
-//  ViewController.swift
+//  FontsViewController.swift
 //  GIFyourself
 //
-//  Created by Bryce Poeter on 3/3/22.
+//  Created by Bryce Poeter on 3/10/22.
 //
-
-// timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(changeColors), userInfo: nil, repeats: true)
 
 import UIKit
 
-class ColorsViewController: UIViewController {
-    
+class FontsViewController: UIViewController {
     var passedText: String?
     
     var collectionView: UICollectionView!
     var colors: [(UIColor, UIColor)] = []
+    var fonts: [UIFont] = []
+    var fontNames = [
+        "BatuphatScript-Regular",
+        "TheNightWatch-Regular",
+        "LettownHills-Italic",
+        "LettownHills-Regular",
+        "Misto-Regular"
+    ]
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,13 @@ class ColorsViewController: UIViewController {
       
         // Make some colors
         colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
+        
+        // Make some fonts
+        fonts = generateRandomFonts(number: 5)
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family), Names: \(names)")
+        }
     
         // Autolayout programmatically
         NSLayoutConstraint.activate([
@@ -64,9 +76,20 @@ class ColorsViewController: UIViewController {
         let newColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
         return newColor
     }
+    
+    func generateRandomFonts(number: Int) -> [UIFont] {
+        let randomNames = fontNames.shuffled().prefix(number)
+        for name in randomNames {
+            guard let font = UIFont(name: name, size: 28) else {
+                fatalError("Looks like the system pulled a wrong font name")
+            }
+            fonts.append(font)
+        }
+        return fonts
+    }
 }
 
-extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -81,6 +104,8 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.textView.backgroundColor = colors[indexPath.row].0
             cell.textView.textColor = colors[indexPath.row].1
             cell.textView.text = passedText ?? "Null"
+            cell.textView.font = fonts[indexPath.row]
+            cell.textView.adjustsFontForContentSizeCategory = true
             return cell
         } else {
             return Cell()

@@ -15,13 +15,15 @@ class TextInputViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.textField.delegate = self
+        
+
 
         // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "textToNext") {
-            let nextViewController = segue.destination as! ColorsViewController
+            let nextViewController = segue.destination as! FontsViewController
             nextViewController.passedText = textField.text
         }
     }
