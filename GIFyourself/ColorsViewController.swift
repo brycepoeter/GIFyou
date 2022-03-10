@@ -9,7 +9,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ColorsViewController: UIViewController {
+    
+    var passedText: String?
     
   var collectionView: UICollectionView!
     var colors: [(UIColor, UIColor)] = []
@@ -64,7 +66,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
@@ -78,12 +80,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
         cell.textView.backgroundColor = colors[indexPath.row].0
         cell.textView.textColor = colors[indexPath.row].1
-        cell.textView.text = "Your Text"
+        cell.textView.text = passedText ?? "Null"
       return cell
     } else {
       return Cell()
     }
   }
+    
+
   
   func makeLayout() -> UICollectionViewLayout {
     
