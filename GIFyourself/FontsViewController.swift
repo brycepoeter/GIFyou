@@ -48,8 +48,6 @@ class FontsViewController: UIViewController {
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
       
-        // Make some colors
-        colors = generateColorPairs(number: fontNames.count, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
         
         // Make some fonts
         fonts = generateRandomFonts(number: fontNames.count)
@@ -66,28 +64,6 @@ class FontsViewController: UIViewController {
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
   }
-    
-    func generateColorPairs(number: Int, inverter: (CGFloat, CGFloat, CGFloat, CGFloat) -> UIColor) -> [(UIColor, UIColor)] {
-        var colors: [(UIColor, UIColor)] = []
-        for _ in 0..<number {
-            let randRed = CGFloat(Float.random(in: 0...255) / 255.0)
-            let randGreen = CGFloat(Float.random(in: 0...255) / 255.0)
-            let randBlue = CGFloat(Float.random(in: 0...255) / 255.0)
-            let alpha = 1.0
-            let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-            let inverted = inverter(randRed, randGreen, randBlue, alpha)
-            colors.append((color, inverted))
-        }
-        return colors
-    }
-    
-    func invertOneMinusInputRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
-        let newRed = 1 - red
-        let newGreen = 1 - green
-        let newBlue = 1 - blue
-        let newColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
-        return newColor
-    }
     
     func generateRandomFonts(number: Int) -> [UIFont] {
         let randomNames = fontNames.shuffled().prefix(number)
@@ -113,8 +89,8 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
-            cell.textView.backgroundColor = colors[indexPath.row].0
-            cell.textView.textColor = colors[indexPath.row].1
+            cell.textView.backgroundColor = .white
+            cell.textView.textColor = .black
             cell.textView.text = passedText ?? "Null"
             cell.textView.font = fonts[indexPath.row]
             cell.textView.adjustsFontForContentSizeCategory = true

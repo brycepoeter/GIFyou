@@ -13,7 +13,7 @@
 		689E56F327D1739C00A44C2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689E56F127D1739C00A44C2F /* Main.storyboard */; };
 		689E56F527D1739E00A44C2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 689E56F427D1739E00A44C2F /* Assets.xcassets */; };
 		689E56F827D1739E00A44C2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 689E56F627D1739E00A44C2F /* LaunchScreen.storyboard */; };
-		689E570327D1DD0A00A44C2F /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689E570227D1DD0A00A44C2F /* ColorCell.swift */; };
+		689E570327D1DD0A00A44C2F /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689E570227D1DD0A00A44C2F /* Cell.swift */; };
 		689E570727DA9A6300A44C2F /* TextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689E570627DA9A6300A44C2F /* TextInputViewController.swift */; };
 		689E570927DA9E6E00A44C2F /* FontsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689E570827DA9E6E00A44C2F /* FontsViewController.swift */; };
 		689E570C27DAAC4100A44C2F /* Batuphat Script.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E570B27DAA79B00A44C2F /* Batuphat Script.otf */; };
@@ -32,6 +32,7 @@
 		689E572627DAC94100A44C2F /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572527DAC94100A44C2F /* PermanentMarker-Regular.ttf */; };
 		689E572827DACA4400A44C2F /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572727DACA4400A44C2F /* Lobster-Regular.ttf */; };
 		689E572A27DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */; };
+		689E572C27DAD76C00A44C2F /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689E572B27DAD76C00A44C2F /* ColorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +44,7 @@
 		689E56F427D1739E00A44C2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		689E56F727D1739E00A44C2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		689E56F927D1739E00A44C2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		689E570227D1DD0A00A44C2F /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
+		689E570227D1DD0A00A44C2F /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		689E570627DA9A6300A44C2F /* TextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewController.swift; sourceTree = "<group>"; };
 		689E570827DA9E6E00A44C2F /* FontsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsViewController.swift; sourceTree = "<group>"; };
 		689E570B27DAA79B00A44C2F /* Batuphat Script.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Batuphat Script.otf"; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		689E572527DAC94100A44C2F /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
 		689E572727DACA4400A44C2F /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
 		689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		689E572B27DAD76C00A44C2F /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,8 @@
 		689E570127D1DCDA00A44C2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				689E570227D1DD0A00A44C2F /* ColorCell.swift */,
+				689E570227D1DD0A00A44C2F /* Cell.swift */,
+				689E572B27DAD76C00A44C2F /* ColorCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,7 +232,8 @@
 			files = (
 				689E56F027D1739C00A44C2F /* ColorsViewController.swift in Sources */,
 				689E570927DA9E6E00A44C2F /* FontsViewController.swift in Sources */,
-				689E570327D1DD0A00A44C2F /* ColorCell.swift in Sources */,
+				689E572C27DAD76C00A44C2F /* ColorCell.swift in Sources */,
+				689E570327D1DD0A00A44C2F /* Cell.swift in Sources */,
 				689E56EC27D1739C00A44C2F /* AppDelegate.swift in Sources */,
 				689E56EE27D1739C00A44C2F /* SceneDelegate.swift in Sources */,
 				689E570727DA9A6300A44C2F /* TextInputViewController.swift in Sources */,

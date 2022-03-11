@@ -16,6 +16,8 @@ class ColorsViewController: UIViewController {
     
     var collectionView: UICollectionView!
     var colors: [(UIColor, UIColor)] = []
+    
+    let numberOfCells = 50
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ class ColorsViewController: UIViewController {
         let layout: UICollectionViewLayout = makeLayout()
         self.collectionView = UICollectionView(frame: self.view.bounds,
                                                collectionViewLayout: layout)
-        self.collectionView.register(Cell.self, forCellWithReuseIdentifier: "cell")
+        self.collectionView.register(ColorCell.self, forCellWithReuseIdentifier: "colorCell")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
@@ -33,7 +35,7 @@ class ColorsViewController: UIViewController {
         self.view.addSubview(self.collectionView)
       
         // Make some colors
-        colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
+        colors = generateColorPairs(number: numberOfCells, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
     
         // Autolayout programmatically
         NSLayoutConstraint.activate([
@@ -74,18 +76,20 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return numberOfCells
     }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
-            cell.textView.backgroundColor = colors[indexPath.row].0
-            cell.textView.textColor = colors[indexPath.row].1
-            cell.textView.text = passedText ?? "Null"
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
+            cell.colors = colors
+//            cell.textView.backgroundColor = colors[indexPath.row].0
+//            cell.textView.textColor = colors[indexPath.row].1
+            cell.textView.text = passedText
+            cell.textView.font = passedFont
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
             return cell
         } else {
-            return Cell()
+            return ColorCell()
         }
     }
     
@@ -93,9 +97,6 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let location = sender.location(in: collectionView)
         let indexPath = collectionView?.indexPathForItem(at: location)
         let row = indexPath?.row
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextVC = storyboard.instantiateViewController(withIdentifier: "colorsViewController") as! ColorsViewController
-        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 
