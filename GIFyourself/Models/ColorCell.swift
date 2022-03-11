@@ -35,6 +35,7 @@ class Cell: UICollectionViewCell {
         self.container.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
 
         self.container.addSubview(self.textView)
+        self.textView.allowsEditingTextAttributes = false
         self.textView.centerXAnchor.constraint(equalTo: self.container.centerXAnchor).isActive = true
         self.textView.centerYAnchor.constraint(equalTo: self.container.centerYAnchor).isActive = true
         self.textView.widthAnchor.constraint(equalToConstant: 300).isActive = true

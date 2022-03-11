@@ -21,6 +21,17 @@
 		689E571027DAAE3100A44C2F /* Lettown Hills.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E570F27DAAE3100A44C2F /* Lettown Hills.otf */; };
 		689E571227DAAE3A00A44C2F /* Lettown Hills italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571127DAAE3A00A44C2F /* Lettown Hills italic.otf */; };
 		689E571427DAAFB300A44C2F /* Misto.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571327DAAFB300A44C2F /* Misto.otf */; };
+		689E571627DAC37B00A44C2F /* Pikolo-BlockAltFree.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571527DAC37B00A44C2F /* Pikolo-BlockAltFree.otf */; };
+		689E571827DAC59500A44C2F /* Kelsi-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571727DAC59500A44C2F /* Kelsi-Regular.otf */; };
+		689E571A27DAC59F00A44C2F /* Kelsi-fill.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571927DAC59F00A44C2F /* Kelsi-fill.otf */; };
+		689E571C27DAC5E300A44C2F /* Quantum.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571B27DAC5E300A44C2F /* Quantum.otf */; };
+		689E571E27DAC6A300A44C2F /* RedSky.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571D27DAC6A300A44C2F /* RedSky.otf */; };
+		689E572027DAC6AB00A44C2F /* RedSky Slanted.otf in Resources */ = {isa = PBXBuildFile; fileRef = 689E571F27DAC6AB00A44C2F /* RedSky Slanted.otf */; };
+		689E572227DAC75500A44C2F /* Bulletto Killa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572127DAC75500A44C2F /* Bulletto Killa.ttf */; };
+		689E572427DAC8DE00A44C2F /* Parisienne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572327DAC8DE00A44C2F /* Parisienne-Regular.ttf */; };
+		689E572627DAC94100A44C2F /* PermanentMarker-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572527DAC94100A44C2F /* PermanentMarker-Regular.ttf */; };
+		689E572827DACA4400A44C2F /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572727DACA4400A44C2F /* Lobster-Regular.ttf */; };
+		689E572A27DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +51,17 @@
 		689E570F27DAAE3100A44C2F /* Lettown Hills.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lettown Hills.otf"; sourceTree = "<group>"; };
 		689E571127DAAE3A00A44C2F /* Lettown Hills italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lettown Hills italic.otf"; sourceTree = "<group>"; };
 		689E571327DAAFB300A44C2F /* Misto.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Misto.otf; sourceTree = "<group>"; };
+		689E571527DAC37B00A44C2F /* Pikolo-BlockAltFree.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pikolo-BlockAltFree.otf"; sourceTree = "<group>"; };
+		689E571727DAC59500A44C2F /* Kelsi-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kelsi-Regular.otf"; sourceTree = "<group>"; };
+		689E571927DAC59F00A44C2F /* Kelsi-fill.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kelsi-fill.otf"; sourceTree = "<group>"; };
+		689E571B27DAC5E300A44C2F /* Quantum.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quantum.otf; sourceTree = "<group>"; };
+		689E571D27DAC6A300A44C2F /* RedSky.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = RedSky.otf; sourceTree = "<group>"; };
+		689E571F27DAC6AB00A44C2F /* RedSky Slanted.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedSky Slanted.otf"; sourceTree = "<group>"; };
+		689E572127DAC75500A44C2F /* Bulletto Killa.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bulletto Killa.ttf"; sourceTree = "<group>"; };
+		689E572327DAC8DE00A44C2F /* Parisienne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Parisienne-Regular.ttf"; sourceTree = "<group>"; };
+		689E572527DAC94100A44C2F /* PermanentMarker-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PermanentMarker-Regular.ttf"; sourceTree = "<group>"; };
+		689E572727DACA4400A44C2F /* Lobster-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lobster-Regular.ttf"; sourceTree = "<group>"; };
+		689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +120,20 @@
 		689E570A27DAA78300A44C2F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */,
+				689E572727DACA4400A44C2F /* Lobster-Regular.ttf */,
+				689E571B27DAC5E300A44C2F /* Quantum.otf */,
+				689E571527DAC37B00A44C2F /* Pikolo-BlockAltFree.otf */,
 				689E571327DAAFB300A44C2F /* Misto.otf */,
+				689E572527DAC94100A44C2F /* PermanentMarker-Regular.ttf */,
+				689E571727DAC59500A44C2F /* Kelsi-Regular.otf */,
+				689E572327DAC8DE00A44C2F /* Parisienne-Regular.ttf */,
 				689E570F27DAAE3100A44C2F /* Lettown Hills.otf */,
+				689E572127DAC75500A44C2F /* Bulletto Killa.ttf */,
+				689E571927DAC59F00A44C2F /* Kelsi-fill.otf */,
 				689E571127DAAE3A00A44C2F /* Lettown Hills italic.otf */,
+				689E571F27DAC6AB00A44C2F /* RedSky Slanted.otf */,
+				689E571D27DAC6A300A44C2F /* RedSky.otf */,
 				689E570D27DAACEB00A44C2F /* TheNightWatch.ttf */,
 				689E570B27DAA79B00A44C2F /* Batuphat Script.otf */,
 			);
@@ -167,12 +200,23 @@
 			files = (
 				689E570E27DAACEB00A44C2F /* TheNightWatch.ttf in Resources */,
 				689E570C27DAAC4100A44C2F /* Batuphat Script.otf in Resources */,
+				689E572A27DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf in Resources */,
 				689E56F827D1739E00A44C2F /* LaunchScreen.storyboard in Resources */,
+				689E571827DAC59500A44C2F /* Kelsi-Regular.otf in Resources */,
 				689E571027DAAE3100A44C2F /* Lettown Hills.otf in Resources */,
+				689E572227DAC75500A44C2F /* Bulletto Killa.ttf in Resources */,
+				689E571627DAC37B00A44C2F /* Pikolo-BlockAltFree.otf in Resources */,
+				689E572827DACA4400A44C2F /* Lobster-Regular.ttf in Resources */,
+				689E571A27DAC59F00A44C2F /* Kelsi-fill.otf in Resources */,
+				689E571E27DAC6A300A44C2F /* RedSky.otf in Resources */,
+				689E572027DAC6AB00A44C2F /* RedSky Slanted.otf in Resources */,
 				689E571427DAAFB300A44C2F /* Misto.otf in Resources */,
 				689E56F527D1739E00A44C2F /* Assets.xcassets in Resources */,
+				689E571C27DAC5E300A44C2F /* Quantum.otf in Resources */,
 				689E56F327D1739C00A44C2F /* Main.storyboard in Resources */,
 				689E571227DAAE3A00A44C2F /* Lettown Hills italic.otf in Resources */,
+				689E572627DAC94100A44C2F /* PermanentMarker-Regular.ttf in Resources */,
+				689E572427DAC8DE00A44C2F /* Parisienne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

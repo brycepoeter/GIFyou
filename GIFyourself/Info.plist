@@ -4,6 +4,17 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>DancingScript-VariableFont_wght.ttf</string>
+		<string>Lobster-Regular.ttf</string>
+		<string>PermanentMarker-Regular.ttf</string>
+		<string>Parisienne-Regular.ttf</string>
+		<string>Bulletto Killa.ttf</string>
+		<string>RedSky Slanted.otf</string>
+		<string>RedSky.otf</string>
+		<string>Quantum.otf</string>
+		<string>Kelsi-Regular.otf</string>
+		<string>Kelsi-fill.otf</string>
+		<string>Pikolo-BlockAltFree.otf</string>
 		<string>Misto.otf</string>
 		<string>Lettown Hills italic.otf</string>
 		<string>Lettown Hills.otf</string>

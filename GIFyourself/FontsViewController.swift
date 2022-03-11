@@ -18,8 +18,20 @@ class FontsViewController: UIViewController {
         "TheNightWatch-Regular",
         "LettownHills-Italic",
         "LettownHills-Regular",
-        "Misto-Regular"
+        "Misto-Regular",
+        "BullettoKilla",
+        "DancingScript-Regular", // "DancingScript-Medium", "DancingScript-SemiBold", "DancingScript-Bold"
+        "Kelsi-Regular", //"Kelsi1-fill"
+        "Lobster-Regular",
+        "LettownHills-Regular", //"LettownHills-Italic"
+        "Parisienne-Regular",
+        "PermanentMarker-Regular",
+        "PikoloBlockAltFree",
+        "QuantumRegular",
+        "RedSky-Regular", //"RedSky-Slanted"
+        
     ]
+    
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +49,14 @@ class FontsViewController: UIViewController {
         self.view.addSubview(self.collectionView)
       
         // Make some colors
-        colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
+        colors = generateColorPairs(number: fontNames.count, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
         
         // Make some fonts
-        fonts = generateRandomFonts(number: 5)
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family), Names: \(names)")
-        }
+        fonts = generateRandomFonts(number: fontNames.count)
+//        for family in UIFont.familyNames.sorted() {
+//            let names = UIFont.fontNames(forFamilyName: family)
+//            print("Family: \(family), Names: \(names)")
+//        }
     
         // Autolayout programmatically
         NSLayoutConstraint.activate([
@@ -96,7 +108,7 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return fontNames.count
     }
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,14 +118,35 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
             cell.textView.text = passedText ?? "Null"
             cell.textView.font = fonts[indexPath.row]
             cell.textView.adjustsFontForContentSizeCategory = true
+            cell.isUserInteractionEnabled = true
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
             return cell
         } else {
             return Cell()
         }
     }
     
+    @objc func cellTapped(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: collectionView)
+        let indexPath = collectionView?.indexPathForItem(at: location)
+        let row = indexPath?.row
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "colorsViewController") as! ColorsViewController
+        nextVC.passedText = self.passedText
+        nextVC.passedFont = self.fonts[row!]
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let nextVC = storyboard.instantiateViewController(withIdentifier: "colorsViewController") as! ColorsViewController
+//        nextVC.passedText = self.passedText
+//        nextVC.passedFont = self.fonts[indexPath.row]
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
 
-  
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             

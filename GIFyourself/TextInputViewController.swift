@@ -17,19 +17,21 @@ class TextInputViewController: UIViewController, UITextFieldDelegate {
         self.textField.delegate = self
         
 
-
         // Do any additional setup after loading the view.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "textToNext") {
-            let nextViewController = segue.destination as! FontsViewController
-            nextViewController.passedText = textField.text
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "textToNext") {
+//            let nextViewController = segue.destination as! FontsViewController
+//            nextViewController.passedText = textField.text
+//        }
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        performSegue(withIdentifier: "textToNext", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "fontsViewController") as! FontsViewController
+        nextVC.passedText = textField.text
+        self.navigationController?.pushViewController(nextVC, animated: true)
         return true
     }
     

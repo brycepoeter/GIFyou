@@ -12,6 +12,7 @@ import UIKit
 class ColorsViewController: UIViewController {
     
     var passedText: String?
+    var passedFont: UIFont?
     
     var collectionView: UICollectionView!
     var colors: [(UIColor, UIColor)] = []
@@ -81,10 +82,20 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             cell.textView.backgroundColor = colors[indexPath.row].0
             cell.textView.textColor = colors[indexPath.row].1
             cell.textView.text = passedText ?? "Null"
+            cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
             return cell
         } else {
             return Cell()
         }
+    }
+    
+    @objc func cellTapped(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: collectionView)
+        let indexPath = collectionView?.indexPathForItem(at: location)
+        let row = indexPath?.row
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "colorsViewController") as! ColorsViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 
