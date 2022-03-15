@@ -17,6 +17,11 @@ class ColorsViewController: UIViewController {
     var collectionView: UICollectionView!
     var colors: [(UIColor, UIColor)] = []
     
+    let inverters = [
+        invertExperiment(red:green:blue:alpha:),
+        invertOneMinusInputRGB(red:green:blue:alpha:)
+    ]
+    
     let numberOfCells = 50
   
     override func viewDidLoad() {
@@ -67,6 +72,14 @@ class ColorsViewController: UIViewController {
         let newColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
         return newColor
     }
+    
+    func invertExperiment(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+        let newRed = abs(0.5 - red)
+        let newGreen = abs(0.5 - green)
+        let newBlue = abs(0.5 - blue)
+        let newColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
+        return newColor
+    }
 }
 
 extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -81,7 +94,8 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
-            cell.colors = colors
+            let inverter = inverters[indexPath.row % 2]
+            cell.colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
 //            cell.textView.backgroundColor = colors[indexPath.row].0
 //            cell.textView.textColor = colors[indexPath.row].1
             cell.textView.text = passedText

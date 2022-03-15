@@ -89,7 +89,7 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
-            cell.textView.backgroundColor = .white
+            cell.textView.backgroundColor = .cyan
             cell.textView.textColor = .black
             cell.textView.text = passedText ?? "Null"
             cell.textView.font = fonts[indexPath.row]
@@ -113,6 +113,10 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -126,15 +130,17 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1.0),
-                                                     heightDimension: NSCollectionLayoutDimension.fractionalHeight(1.0)))
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),  heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
+                                                                             heightDimension: NSCollectionLayoutDimension.fractionalHeight(0.5)))
+            item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 20)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),  heightDimension: .fractionalHeight(0.9))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
 
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 100, leading: 20, bottom: 20, trailing: 20)
         return section
         }
+//        layout.collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         return layout
         }
 
