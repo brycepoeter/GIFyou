@@ -7,7 +7,6 @@
 
 import UIKit
 
-import UIKit
 
 class Cell: UICollectionViewCell {
 //    var container: UIView = {
@@ -24,6 +23,8 @@ class Cell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -17,11 +17,6 @@ class ColorsViewController: UIViewController {
     var collectionView: UICollectionView!
     var colors: [[UIColor]] = []
     
-    let inverters = [
-        invertExperiment(red:green:blue:alpha:),
-        invertOneMinusInputRGB(red:green:blue:alpha:)
-    ]
-    
     let numberOfCells = ColorFactory.sharedInstance.generators.count
   
     override func viewDidLoad() {
@@ -51,35 +46,6 @@ class ColorsViewController: UIViewController {
         ])
   }
     
-    func generateColorPairs(number: Int, inverter: (CGFloat, CGFloat, CGFloat, CGFloat) -> UIColor) -> [(UIColor, UIColor)] {
-        var colors: [(UIColor, UIColor)] = []
-        for _ in 0..<number {
-            let randRed = CGFloat(Float.random(in: 0...255) / 255.0)
-            let randGreen = CGFloat(Float.random(in: 0...255) / 255.0)
-            let randBlue = CGFloat(Float.random(in: 0...255) / 255.0)
-            let alpha = 1.0
-            let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-            let inverted = inverter(randRed, randGreen, randBlue, alpha)
-            colors.append((color, inverted))
-        }
-        return colors
-    }
-    
-    func invertOneMinusInputRGB(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
-        let newRed = 1 - red
-        let newGreen = 1 - green
-        let newBlue = 1 - blue
-        let newColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
-        return newColor
-    }
-    
-    func invertExperiment(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
-        let newRed = abs(0.5 - red)
-        let newGreen = abs(0.5 - green)
-        let newBlue = abs(0.5 - blue)
-        let newColor = UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: alpha)
-        return newColor
-    }
 }
 
 extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -94,13 +60,10 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
-           
             cell.colors = colors[indexPath.row]
-//            cell.colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
-//            cell.textView.backgroundColor = colors[indexPath.row].0
-//            cell.textView.textColor = colors[indexPath.row].1
             cell.textView.text = passedText
             cell.textView.font = passedFont
+            print(cell.toImage())
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
             return cell
         } else {
@@ -109,26 +72,25 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     @objc func cellTapped(_ sender: UITapGestureRecognizer) {
+        // Make gif
         let location = sender.location(in: collectionView)
         let indexPath = collectionView?.indexPathForItem(at: location)
         let row = indexPath?.row
+        let cellColors = colors[row!]
     }
     
 
   
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            
-        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1.0),
-                                                     heightDimension: NSCollectionLayoutDimension.fractionalHeight(1.0)))
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),  heightDimension: .fractionalHeight(1.0))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 100, leading: 20, bottom: 20, trailing: 20)
-        return section
+            let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
+                                                                             heightDimension: NSCollectionLayoutDimension.fractionalHeight(0.5)))
+            item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 20)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),  heightDimension: .fractionalHeight(0.9))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 100, leading: 20, bottom: 20, trailing: 20)
+            return section
         }
         return layout
-        }
-
-}
+    }}

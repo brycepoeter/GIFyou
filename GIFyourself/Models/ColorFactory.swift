@@ -11,7 +11,7 @@ import UIKit
 class ColorFactory {
     
     static let sharedInstance: ColorFactory = ColorFactory()
-    public let fontCellColors = (["text": UIColor.black, "background": UIColor.cyan])
+    public var fontCellColors = (["text": UIColor.black, "background": UIColor.cyan])
     
     public var generators: [() -> UIColor] = []
     

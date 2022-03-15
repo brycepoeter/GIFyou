@@ -34,6 +34,8 @@
 		689E572A27DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */; };
 		689E572C27DAD76C00A44C2F /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689E572B27DAD76C00A44C2F /* ColorCell.swift */; };
 		68BD97E027E1210100EB83AC /* ColorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97DF27E1210100EB83AC /* ColorFactory.swift */; };
+		68BD97E227E132BF00EB83AC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E127E132BF00EB83AC /* View.swift */; };
+		68BD97E427E1347800EB83AC /* GifFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E327E1347800EB83AC /* GifFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		689E572927DACA8D00A44C2F /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		689E572B27DAD76C00A44C2F /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		68BD97DF27E1210100EB83AC /* ColorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFactory.swift; sourceTree = "<group>"; };
+		68BD97E127E132BF00EB83AC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		68BD97E327E1347800EB83AC /* GifFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,8 @@
 				689E570227D1DD0A00A44C2F /* Cell.swift */,
 				689E572B27DAD76C00A44C2F /* ColorCell.swift */,
 				68BD97DF27E1210100EB83AC /* ColorFactory.swift */,
+				68BD97E127E132BF00EB83AC /* View.swift */,
+				68BD97E327E1347800EB83AC /* GifFactory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,6 +244,8 @@
 				689E572C27DAD76C00A44C2F /* ColorCell.swift in Sources */,
 				689E570327D1DD0A00A44C2F /* Cell.swift in Sources */,
 				68BD97E027E1210100EB83AC /* ColorFactory.swift in Sources */,
+				68BD97E427E1347800EB83AC /* GifFactory.swift in Sources */,
+				68BD97E227E132BF00EB83AC /* View.swift in Sources */,
 				689E56EC27D1739C00A44C2F /* AppDelegate.swift in Sources */,
 				689E56EE27D1739C00A44C2F /* SceneDelegate.swift in Sources */,
 				689E570727DA9A6300A44C2F /* TextInputViewController.swift in Sources */,
