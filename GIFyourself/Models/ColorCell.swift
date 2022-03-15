@@ -9,7 +9,7 @@ import UIKit
 
 class ColorCell: Cell {
     
-    var colors: [(UIColor, UIColor)]?
+    var colors: [UIColor]?
     var colorSwitches = 0
     
     override func didMoveToWindow() {
@@ -19,8 +19,8 @@ class ColorCell: Cell {
     }
         
     @objc func changeColors() {
-        textView.backgroundColor = colors![self.colorSwitches % colors!.count].0
-        textView.textColor = colors![self.colorSwitches % colors!.count].1
+        textView.backgroundColor = colors![self.colorSwitches % colors!.count]
+        textView.textColor = textView.backgroundColor?.invertedColor
         colorSwitches += 1
     }
 }

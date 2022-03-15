@@ -89,8 +89,8 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
-            cell.textView.backgroundColor = .cyan
-            cell.textView.textColor = .black
+            cell.textView.backgroundColor = ColorFactory.sharedInstance.fontCellColors["background"]
+            cell.textView.textColor = ColorFactory.sharedInstance.fontCellColors["text"]
             cell.textView.text = passedText ?? "Null"
             cell.textView.font = fonts[indexPath.row]
             cell.textView.adjustsFontForContentSizeCategory = true

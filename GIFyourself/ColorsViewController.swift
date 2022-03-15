@@ -15,14 +15,14 @@ class ColorsViewController: UIViewController {
     var passedFont: UIFont?
     
     var collectionView: UICollectionView!
-    var colors: [(UIColor, UIColor)] = []
+    var colors: [[UIColor]] = []
     
     let inverters = [
         invertExperiment(red:green:blue:alpha:),
         invertOneMinusInputRGB(red:green:blue:alpha:)
     ]
     
-    let numberOfCells = 50
+    let numberOfCells = ColorFactory.sharedInstance.generators.count
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +40,8 @@ class ColorsViewController: UIViewController {
         self.view.addSubview(self.collectionView)
       
         // Make some colors
-        colors = generateColorPairs(number: numberOfCells, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
-    
+        colors = ColorFactory.sharedInstance.makeAllCellColors(numColorsPerCell: 6)
+        
         // Autolayout programmatically
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
@@ -94,8 +94,9 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
   
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
-            let inverter = inverters[indexPath.row % 2]
-            cell.colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
+           
+            cell.colors = colors[indexPath.row]
+//            cell.colors = generateColorPairs(number: 5, inverter: invertOneMinusInputRGB(red:green:blue:alpha:))
 //            cell.textView.backgroundColor = colors[indexPath.row].0
 //            cell.textView.textColor = colors[indexPath.row].1
             cell.textView.text = passedText
