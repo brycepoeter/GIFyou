@@ -11,7 +11,9 @@ import UIKit
 class ColorFactory {
     
     static let sharedInstance: ColorFactory = ColorFactory()
-    public var fontCellColors = (["text": UIColor.black, "background": UIColor.cyan])
+//    public var fontCellColors = (["text": UIColor.white,
+//                                  "background": UIColor(red: 251/255, green: 101/255, blue: 66/255, alpha: 1)])
+    public var fontCellColors = (["text": UIColor.black, "background": UIColor.white])
     
     public var generators: [() -> UIColor] = []
     
@@ -28,6 +30,7 @@ class ColorFactory {
     
     func makeAllCellColors(numColorsPerCell: Int) -> [[UIColor]] {
         var colors: [[UIColor]] = []
+        self.generators.shuffle()
         for i in 0..<ColorFactory.sharedInstance.generators.count {
             let cellColors = makeCellColors(number: numColorsPerCell, generator: ColorFactory.sharedInstance.generators[i])
             colors.append(cellColors)
@@ -98,23 +101,5 @@ class ColorFactory {
         return color
     }
     
-    
-}
-
-// https://www.hackingwithswift.com/example-code/uicolor/how-to-read-the-red-green-blue-and-alpha-color-components-from-a-uicolor
-extension UIColor {
-    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        return (red, green, blue, alpha)
-    }
-    
-    var invertedColor: UIColor {
-        let newColor = UIColor(red: 1 - self.rgba.0, green: 1 - self.rgba.1, blue: 1 - self.rgba.2, alpha: self.rgba.3)
-        return newColor
-    }
     
 }

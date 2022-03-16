@@ -36,6 +36,7 @@
 		68BD97E027E1210100EB83AC /* ColorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97DF27E1210100EB83AC /* ColorFactory.swift */; };
 		68BD97E227E132BF00EB83AC /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E127E132BF00EB83AC /* View.swift */; };
 		68BD97E427E1347800EB83AC /* GifFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E327E1347800EB83AC /* GifFactory.swift */; };
+		68BD97E627E179B600EB83AC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E527E179B600EB83AC /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		68BD97DF27E1210100EB83AC /* ColorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFactory.swift; sourceTree = "<group>"; };
 		68BD97E127E132BF00EB83AC /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		68BD97E327E1347800EB83AC /* GifFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifFactory.swift; sourceTree = "<group>"; };
+		68BD97E527E179B600EB83AC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +107,10 @@
 				689E56EB27D1739C00A44C2F /* AppDelegate.swift */,
 				689E56ED27D1739C00A44C2F /* SceneDelegate.swift */,
 				689E56EF27D1739C00A44C2F /* ColorsViewController.swift */,
+				689E570827DA9E6E00A44C2F /* FontsViewController.swift */,
 				689E570627DA9A6300A44C2F /* TextInputViewController.swift */,
 				689E570127D1DCDA00A44C2F /* Models */,
 				689E56F127D1739C00A44C2F /* Main.storyboard */,
-				689E570827DA9E6E00A44C2F /* FontsViewController.swift */,
 				689E570A27DAA78300A44C2F /* Fonts */,
 				689E56F427D1739E00A44C2F /* Assets.xcassets */,
 				689E56F627D1739E00A44C2F /* LaunchScreen.storyboard */,
@@ -125,6 +127,7 @@
 				68BD97DF27E1210100EB83AC /* ColorFactory.swift */,
 				68BD97E127E132BF00EB83AC /* View.swift */,
 				68BD97E327E1347800EB83AC /* GifFactory.swift */,
+				68BD97E527E179B600EB83AC /* Color.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			files = (
 				689E56F027D1739C00A44C2F /* ColorsViewController.swift in Sources */,
 				689E570927DA9E6E00A44C2F /* FontsViewController.swift in Sources */,
+				68BD97E627E179B600EB83AC /* Color.swift in Sources */,
 				689E572C27DAD76C00A44C2F /* ColorCell.swift in Sources */,
 				689E570327D1DD0A00A44C2F /* Cell.swift in Sources */,
 				68BD97E027E1210100EB83AC /* ColorFactory.swift in Sources */,
@@ -403,6 +407,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -431,6 +436,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

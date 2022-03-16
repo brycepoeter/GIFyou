@@ -19,6 +19,7 @@ class ColorsViewController: UIViewController {
     
     let numberOfCells = ColorFactory.sharedInstance.generators.count
   
+    @IBOutlet weak var pageTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -33,13 +34,20 @@ class ColorsViewController: UIViewController {
         // Place the collectionView in the viewController's view
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
+        
+        // Set page title
+        self.pageTitle.font = UIFont(name: "Lobster-Regular", size: 48)
+        self.pageTitle.textColor = .black
+        self.pageTitle.layer.shadowRadius = 4
+        self.pageTitle.layer.shadowOpacity = 0.25
+        self.pageTitle.layer.shadowOffset = CGSize(width: 0, height: 2)
       
         // Make some colors
         colors = ColorFactory.sharedInstance.makeAllCellColors(numColorsPerCell: 6)
         
         // Autolayout programmatically
         NSLayoutConstraint.activate([
-            self.collectionView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+            self.collectionView.topAnchor.constraint(equalTo: self.pageTitle.bottomAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
@@ -57,13 +65,12 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCells
     }
-  
+      
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
             cell.colors = colors[indexPath.row]
             cell.textView.text = passedText
             cell.textView.font = passedFont
-            print(cell.toImage())
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
             return cell
         } else {
@@ -75,8 +82,10 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         // Make gif
         let location = sender.location(in: collectionView)
         let indexPath = collectionView?.indexPathForItem(at: location)
-        let row = indexPath?.row
-        let cellColors = colors[row!]
+        let cell = collectionView?.cellForItem(at: indexPath!) as! ColorCell
+        cell.setImages()
+//        let result = GifFactory.sharedInstance.generateGif(photos: cell.images, filename: "/test.gif")
+//        print(result)
     }
     
 
@@ -89,7 +98,7 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),  heightDimension: .fractionalHeight(0.9))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 100, leading: 20, bottom: 20, trailing: 20)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20)
             return section
         }
         return layout
