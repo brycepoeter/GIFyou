@@ -20,8 +20,6 @@ extension UIColor {
     }
     
     var invertedColor: UIColor {
-        // If r/b/g is 0, keep it 0 inverted, that way it keeps whatever not-red/not-blue/not-green
-        // designation was used by the random generator
         let red = 1 - self.rgba.0 //== 0 ? 0 : 1 - self.rgba.0
         let green = 1 - self.rgba.1 //== 0 ? 0 : 1 - self.rgba.1
         let blue = 1 - self.rgba.2 //== 0 ? 0 : 1 - self.rgba.2

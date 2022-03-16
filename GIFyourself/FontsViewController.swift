@@ -42,10 +42,9 @@ class FontsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment self.drawBackground() to make background same as home page
         self.viewWidth = self.view.bounds.width
         self.viewHeight = self.view.bounds.height
-        self.drawBackground()
+        self.drawBackground(width: self.viewWidth, height: self.viewHeight)
     
         // Setup the Collection View
         let layout: UICollectionViewLayout = makeLayout()
@@ -59,14 +58,13 @@ class FontsViewController: UIViewController {
         // Place the collectionView in the viewController's view
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
-//        self.view.sendSubviewToBack(self.collectionView)
         
+        // Set title properties
         self.pageTitle.font = UIFont(name: "Lobster-Regular", size: 48)
         self.pageTitle.textColor = .white
         self.pageTitle.layer.shadowRadius = 4
         self.pageTitle.layer.shadowOpacity = 0.25
         self.pageTitle.layer.shadowOffset = CGSize(width: 0, height: 2)
-      
         
         // Make some fonts
         fonts = generateRandomFonts(number: fontNames.count)
@@ -79,33 +77,6 @@ class FontsViewController: UIViewController {
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
   }
-    
-    func drawBackground() {
-        let renderer = UIGraphicsImageRenderer(bounds: self.view.bounds)
-        let image = renderer.image { (context) in
-            UIColor.darkGray.setStroke()
-            context.stroke(renderer.format.bounds)
-            // Top left
-            UIColor(red: 230/255, green: 215/255, blue: 42/255, alpha: 1).setFill()
-            context.fill(CGRect(x: 0, y: 0, width: self.viewWidth / 2, height: self.viewHeight / 2 + 100))
-            // Top right
-            UIColor(red: 241/255, green: 141/255, blue: 158/255, alpha: 1).setFill()
-            context.fill(CGRect(x: self.viewWidth / 2, y: 0, width: 200, height: self.viewHeight / 2 - 70))
-            // Bottom right
-            UIColor(red: 152/255, green: 219/255, blue: 198/255, alpha: 1).setFill()
-            context.fill(CGRect(x: self.viewWidth / 2 - 100, y: self.viewHeight / 2 - 70, width: self.viewWidth, height: self.viewHeight))
-            // Bottom left
-            UIColor(red: 25/255, green: 149/255, blue: 173/255, alpha: 1).setFill()
-            context.fill(CGRect(x: 0, y: self.viewHeight / 2 + 100, width: self.viewWidth / 2 - 100, height: self.viewHeight / 2))
-            // Middle
-            UIColor(red: 91/255, green: 200/255, blue: 172/255, alpha: 1).setFill()
-            context.fill(CGRect(x: self.viewWidth / 2 - 100, y: self.viewHeight / 2 - 70, width: self.viewWidth / 2 - (self.viewWidth / 2 - 100), height: self.viewHeight / 2 + 100 - (self.viewHeight / 2 - 70)))
-
-        }
-        let imageView = UIImageView(image: image)
-        self.view.addSubview(imageView)
-        self.view.sendSubviewToBack(imageView)
-    }
     
     func generateRandomFonts(number: Int) -> [UIFont] {
         let randomNames = fontNames.shuffled().prefix(number)

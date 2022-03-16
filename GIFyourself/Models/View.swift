@@ -17,19 +17,8 @@ extension UIView {
         return img
     }
     
-    func saveAsJpeg(fileName: String) {
-        if let data = toImage().jpegData(compressionQuality: 0.8) {
-            let filename = getDocumentsDirectory().appendingPathComponent(fileName)
-            try? data.write(to: filename)
-        }
-    }
-    
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-    
-//    var asJpeg: Data? {
-////        return toImage().jpegData(compressionQuality: 1.0)
-//    }
 }
