@@ -10,6 +10,13 @@ import UIKit
 
 class Cell: UICollectionViewCell {
     
+    /*
+     This is the base class for the display cells on the FontsView and ColorsView
+     Essentially it's a place to put text with a background. FontsViewController
+     uses this cell directly, and ColorsViewController uses a subclass of it
+     */
+    
+    // Label where passed text shows up
     var textView: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0

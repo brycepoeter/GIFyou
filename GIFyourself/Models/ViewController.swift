@@ -9,6 +9,11 @@ import Foundation
 import UIKit
 
 extension UIViewController {
+    
+    /*
+     This extension is where I make the background colors on each screen.
+     Good ol image renderer!
+     */
         
     // Color ideas: https://www.canva.com/learn/100-color-combinations/
     func drawBackground(width: CGFloat, height: CGFloat) {

@@ -8,6 +8,14 @@
 import UIKit
 
 class FontsViewController: UIViewController {
+    
+    /*
+     ViewController for the second screen, where users pick a font.
+     Essentially creates a title and a collection view with Cell class cells.
+     Each cell has a different font with the same passed text. When cells are
+     clicked on, text and font choice are passed to ColorsVC, where colors are
+     picked and GIFs are made.
+     */
     var passedText: String?
     
     var collectionView: UICollectionView!
@@ -124,6 +132,7 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let nextVC = storyboard.instantiateViewController(withIdentifier: "colorsViewController") as! ColorsViewController
         nextVC.passedText = self.passedText
         nextVC.passedFont = self.fonts[row!]
+        print("FontsVC sending text = \(self.passedText ?? "UNKNOWN") and font = \(self.fonts[row!]) to ColorsVC")
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -131,6 +140,8 @@ extension FontsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return 10.0
     }
 
+    // Makes the layout for the collection view. Mostly this is here to give
+    // some spacing between items and some room for a title.
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),

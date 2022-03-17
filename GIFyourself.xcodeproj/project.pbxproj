@@ -38,6 +38,10 @@
 		68BD97E427E1347800EB83AC /* GifFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E327E1347800EB83AC /* GifFactory.swift */; };
 		68BD97E627E179B600EB83AC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E527E179B600EB83AC /* Color.swift */; };
 		68BD97E827E1AB5900EB83AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E727E1AB5900EB83AC /* ViewController.swift */; };
+		68BD97EA27E295A100EB83AC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BD97E927E295A100EB83AC /* SplashViewController.swift */; };
+		68C27A0F27E37DEF007F2350 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 68C27A0E27E37DEF007F2350 /* Settings.bundle */; };
+		68CF443F27E3A1D800C73E72 /* brycepoeter_marketing.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 68CF443E27E3A1D800C73E72 /* brycepoeter_marketing.pdf */; };
+		68CF444127E3A98600C73E72 /* brycepoeter_executive.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 68CF444027E3A98600C73E72 /* brycepoeter_executive.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +78,10 @@
 		68BD97E327E1347800EB83AC /* GifFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifFactory.swift; sourceTree = "<group>"; };
 		68BD97E527E179B600EB83AC /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		68BD97E727E1AB5900EB83AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68BD97E927E295A100EB83AC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		68C27A0E27E37DEF007F2350 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		68CF443E27E3A1D800C73E72 /* brycepoeter_marketing.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = brycepoeter_marketing.pdf; sourceTree = "<group>"; };
+		68CF444027E3A98600C73E72 /* brycepoeter_executive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = brycepoeter_executive.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				689E56EB27D1739C00A44C2F /* AppDelegate.swift */,
+				68C27A0E27E37DEF007F2350 /* Settings.bundle */,
 				689E56ED27D1739C00A44C2F /* SceneDelegate.swift */,
 				689E56EF27D1739C00A44C2F /* ColorsViewController.swift */,
+				68BD97E927E295A100EB83AC /* SplashViewController.swift */,
+				68CF443B27E39D3B00C73E72 /* MarketingMaterials */,
 				689E570827DA9E6E00A44C2F /* FontsViewController.swift */,
 				689E570627DA9A6300A44C2F /* TextInputViewController.swift */,
 				689E570127D1DCDA00A44C2F /* Models */,
@@ -156,6 +167,15 @@
 				689E570B27DAA79B00A44C2F /* Batuphat Script.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		68CF443B27E39D3B00C73E72 /* MarketingMaterials */ = {
+			isa = PBXGroup;
+			children = (
+				68CF444027E3A98600C73E72 /* brycepoeter_executive.pdf */,
+				68CF443E27E3A1D800C73E72 /* brycepoeter_marketing.pdf */,
+			);
+			path = MarketingMaterials;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,12 +244,15 @@
 				689E571027DAAE3100A44C2F /* Lettown Hills.otf in Resources */,
 				689E572227DAC75500A44C2F /* Bulletto Killa.ttf in Resources */,
 				689E571627DAC37B00A44C2F /* Pikolo-BlockAltFree.otf in Resources */,
+				68CF443F27E3A1D800C73E72 /* brycepoeter_marketing.pdf in Resources */,
 				689E572827DACA4400A44C2F /* Lobster-Regular.ttf in Resources */,
 				689E571A27DAC59F00A44C2F /* Kelsi-fill.otf in Resources */,
 				689E571E27DAC6A300A44C2F /* RedSky.otf in Resources */,
 				689E572027DAC6AB00A44C2F /* RedSky Slanted.otf in Resources */,
+				68C27A0F27E37DEF007F2350 /* Settings.bundle in Resources */,
 				689E571427DAAFB300A44C2F /* Misto.otf in Resources */,
 				689E56F527D1739E00A44C2F /* Assets.xcassets in Resources */,
+				68CF444127E3A98600C73E72 /* brycepoeter_executive.pdf in Resources */,
 				689E571C27DAC5E300A44C2F /* Quantum.otf in Resources */,
 				689E56F327D1739C00A44C2F /* Main.storyboard in Resources */,
 				689E571227DAAE3A00A44C2F /* Lettown Hills italic.otf in Resources */,
@@ -251,6 +274,7 @@
 				689E572C27DAD76C00A44C2F /* ColorCell.swift in Sources */,
 				689E570327D1DD0A00A44C2F /* Cell.swift in Sources */,
 				68BD97E027E1210100EB83AC /* ColorFactory.swift in Sources */,
+				68BD97EA27E295A100EB83AC /* SplashViewController.swift in Sources */,
 				68BD97E827E1AB5900EB83AC /* ViewController.swift in Sources */,
 				68BD97E427E1347800EB83AC /* GifFactory.swift in Sources */,
 				68BD97E227E132BF00EB83AC /* View.swift in Sources */,
@@ -419,8 +443,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "bryce-personal.GIFyourself";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "bryce-personal.GIFYourself";
+				PRODUCT_NAME = $TARGET_NAME;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -448,8 +472,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "bryce-personal.GIFyourself";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "bryce-personal.GIFYourself";
+				PRODUCT_NAME = $TARGET_NAME;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -8,10 +8,54 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="LmZ-Ok-vLT">
+            <objects>
+                <viewController storyboardIdentifier="splashViewController" id="Zdh-uf-xOK" customClass="SplashViewController" customModule="GIFyourself" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ZR-iR-Y5X">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gifYou" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHH-PU-SBb">
+                                <rect key="frame" x="20" y="126" width="374" height="212"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="59"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created By" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLY-zn-wjW">
+                                <rect key="frame" x="20" y="412" width="374" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bryce Poeter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diT-ab-dvW">
+                                <rect key="frame" x="20" y="467" width="374" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kfe-iG-JO6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uQj-jw-sP7"/>
+                    <connections>
+                        <outlet property="createdBy" destination="QLY-zn-wjW" id="NeJ-Nt-jBh"/>
+                        <outlet property="devName" destination="diT-ab-dvW" id="GRm-tN-7iH"/>
+                        <outlet property="logo" destination="RHH-PU-SBb" id="g0N-V8-Lu0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5TN-ed-HtT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1068.1159420289855" y="-579.24107142857144"/>
+        </scene>
         <!--Text Input View Controller-->
         <scene sceneID="yKt-31-8cr">
             <objects>
-                <viewController id="lcd-gi-eod" customClass="TextInputViewController" customModule="GIFyourself" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="textInputViewController" id="lcd-gi-eod" customClass="TextInputViewController" customModule="GIFyourself" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fhw-Hn-GE6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Pf-8u-ldA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-655.07246376811599" y="143.97321428571428"/>
+            <point key="canvasLocation" x="-314" y="-112"/>
         </scene>
         <!--Fonts View Controller-->
         <scene sceneID="Swo-ZN-guF">
@@ -117,12 +161,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="lcd-gi-eod" kind="relationship" relationship="rootViewController" id="G9J-vp-WF7"/>
+                        <segue destination="Zdh-uf-xOK" kind="relationship" relationship="rootViewController" id="cWM-Vm-wHd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVl-nM-kBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1565.217391304348" y="143.97321428571428"/>
+            <point key="canvasLocation" x="-2243" y="116"/>
         </scene>
     </scenes>
     <resources>

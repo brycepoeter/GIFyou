@@ -9,32 +9,25 @@ import UIKit
 
 class ColorCell: Cell {
     
+    /*
+     This is the cell that the ColorsViewController uses. Main difference between
+     this and Cell is that this has colors and images attached to it that are used
+     both for presentation and for making GIFs in GifFactory.
+     */
+    
     var colors: [UIColor]?
-    var colorSwitches = 0
     var images: [UIImage] = []
 
-//    override func didMoveToWindow() {
-//        // https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer
-//        let timer = Timer.scheduledTimer(timeInterval: 0.67, target: self, selector: #selector(changeColors), userInfo: nil, repeats: true)
-//        RunLoop.current.add(timer, forMode: .common)
-//    }
-//
-//    @objc func changeColors() {
-//        textView.backgroundColor = colors![self.colorSwitches % colors!.count]
-//        textView.textColor = textView.backgroundColor?.invertedColor
-//        colorSwitches += 1
-//    }
-//
-//    func setImages() {
-//        for color in self.colors! {
-//            let cell = Cell()
-//            let view = cell.contentView
-//            cell.textView.backgroundColor = color
-//            cell.textView.textColor = color.invertedColor
-//            let uiImage = view.toImage()
-//
-//            self.images.append(uiImage)
-//
-//        }
-//    }
+    // Set the cell's UIImages. These will then be used by GifFactory to make a GIF
+    func setImages(frame: CGRect, text: String, font: UIFont) {
+        for color in self.colors! {
+            self.textView.frame = frame
+            self.textView.backgroundColor = color
+            self.textView.text = text
+            self.textView.font = font
+            self.textView.textColor = color.invertedColor
+            let uiImage = self.textView.toImage()
+            self.images.append(uiImage)
+        }
+    }
 }

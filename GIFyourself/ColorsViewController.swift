@@ -11,6 +11,15 @@ import UIKit
 import UniformTypeIdentifiers
 
 class ColorsViewController: UIViewController {
+    /*
+     Where it all comes together! VC for third screen user sees. Takes in
+     passed text and font data, puts them in cells, and uses ColorFactory to give
+     each cell unique colors. When dequeued, cells create an image of themselves with each
+     color combo that's passed to them (so if you give ColorCell 6 colors, it'll create
+     6 images) and then GifFactory takes those images and makes a GIF out of them. GifFactory
+     also presents the saved GIFs as UIImageViews. After onClick, GIFs are copied to pasteboard
+     so users can paste them into chats.
+     */
     
     var passedText: String?
     var passedFont: UIFont?
@@ -24,7 +33,7 @@ class ColorsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        self.drawBackground(width: self.view.bounds.width, height: self.view.bounds.height)
         
         // Setup the Collection View
         let layout: UICollectionViewLayout = makeLayout()
@@ -42,7 +51,7 @@ class ColorsViewController: UIViewController {
         
         // Set page title
         self.pageTitle.font = UIFont(name: "Lobster-Regular", size: 48)
-        self.pageTitle.textColor = .black
+        self.pageTitle.textColor = .white
         self.pageTitle.layer.shadowRadius = 4
         self.pageTitle.layer.shadowOpacity = 0.25
         self.pageTitle.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -71,50 +80,41 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return numberOfCells
     }
       
+    // Sets cell images, saves
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
             cell.colors = colors[indexPath.row]
-            for color in cell.colors! {
-                cell.textView.frame = cell.bounds
-                cell.textView.backgroundColor = color
-                cell.textView.text = passedText
-                cell.textView.font = passedFont
-                cell.textView.textColor = color.invertedColor
-                let uiImage = cell.textView.toImage()
-                cell.images.append(uiImage)
-            }
-            let result = GifFactory.sharedInstance.generateGif(photos: cell.images, filename: "/gif\(indexPath.row).gif")
+            cell.setImages(frame: cell.bounds, text: passedText!, font: passedFont!)
+            let _ = GifFactory.sharedInstance.saveGif(photos: cell.images, filename: "/gif\(indexPath.row).gif")
             let gifView = GifFactory.sharedInstance.showGif(frame: cell.bounds, resourceName: "/gif\(indexPath.row).gif")
             cell.addSubview(gifView!)
+            cell.bringSubviewToFront(gifView!)
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
+            gifView?.animationDuration = 3
+            gifView?.startAnimating()
             return cell
         } else {
             return ColorCell()
         }
     }
     
+    // Find gif, copy to pasteboard, alert success/failure
     @objc func cellTapped(_ sender: UITapGestureRecognizer) {
-        // Make gif
         let location = sender.location(in: collectionView)
         let indexPath = collectionView?.indexPathForItem(at: location)
-        let cell = collectionView?.cellForItem(at: indexPath!) as! ColorCell
-        let gifImage = GifFactory.sharedInstance.returnImageFromGifFile(filename: "/gif\(indexPath!.row).gif")
-        let gifView = GifFactory.sharedInstance.showGif(frame: cell.bounds, resourceName: "/gif\(indexPath!.row).gif")
-//        UIPasteboard.general.images = gifView?.animationImages
-        
         let documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let path = documentsDirectoryPath.appending("/gif\(indexPath!.row).gif")
         let url = URL(fileURLWithPath: path)
         let data = try? Data(contentsOf: url)
         UIPasteboard.general.setData(data!, forPasteboardType: UTType.gif.description)
-//        UIPasteboard.general.itemProviders.append(gifProvider!)
-//        UIPasteboard.typeListImage = [UTType.gif.description]
-//        UIPasteboard.general.images. = gifView?.animationImages
-        print("Success")
+        let alert = UIAlertController(title: "Copied GIF", message: "Paste in Chat", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        print("Successfully copied GIF")
     }
-    
-
   
+    // Makes the layout for the collection view. Mostly this is here to give
+    // some spacing between items and some room for a title.
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),

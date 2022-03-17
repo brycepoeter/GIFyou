@@ -8,6 +8,11 @@
 import UIKit
 
 class TextInputViewController: UIViewController, UITextFieldDelegate {
+    /*
+     ViewController for the first screen the user encounters. Essentially sets
+     a logo and a textfield, takes in user text input, and sends it to the FontsVC
+     so people can choose the font they want in the final GIF
+     */
 
     @IBOutlet weak var logo: UILabel!
     @IBOutlet weak var textFieldLabel: UILabel!
@@ -23,6 +28,15 @@ class TextInputViewController: UIViewController, UITextFieldDelegate {
         self.viewHeight = self.view.bounds.height
         
         self.drawBackground(width: self.viewWidth, height: self.viewHeight)
+        self.navigationItem.hidesBackButton = true
+        
+        // If first time opening, show tutorial
+        let timesAppOpened = UserDefaults.standard.string(forKey: "timesAppOpened")
+        if timesAppOpened == "1" {
+            let alert = UIAlertController(title: "How To Use", message: "1. Enter Text \n 2. Pick Font \n 3. Tap GIF to Copy", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
         // Logo
         self.logo.font = UIFont(name: "Lobster-Regular", size: 56)
@@ -44,14 +58,15 @@ class TextInputViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Handles nav and data passing when user hits enter on textfield
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: "fontsViewController") as! FontsViewController
         nextVC.passedText = textField.text
         self.navigationController?.pushViewController(nextVC, animated: true)
+        print("TextInputVC sending text = \(textField.text?.debugDescription ?? "UNKNOWN") to FontsVC")
         return true
     }
-    
 
 }
 
