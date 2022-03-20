@@ -39,7 +39,7 @@ class ColorsViewController: UIViewController {
         let layout: UICollectionViewLayout = makeLayout()
         self.collectionView = UICollectionView(frame: self.view.bounds,
                                                collectionViewLayout: layout)
-        self.collectionView.register(ColorCell.self, forCellWithReuseIdentifier: "colorCell")
+        self.collectionView.register(Cell.self, forCellWithReuseIdentifier: "cell")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.backgroundColor = UIColor(white: 1, alpha: 0)
@@ -57,7 +57,7 @@ class ColorsViewController: UIViewController {
         self.pageTitle.layer.shadowOffset = CGSize(width: 0, height: 2)
       
         // Make some colors
-        colors = ColorFactory.sharedInstance.makeAllCellColors(numColorsPerCell: 6)
+        colors = ColorFactory.sharedInstance.makeAllCellColors()
         
         // Autolayout programmatically
         NSLayoutConstraint.activate([
@@ -67,6 +67,10 @@ class ColorsViewController: UIViewController {
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
   }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.cycleColors()
+    }
     
 }
 
@@ -82,26 +86,36 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
       
     // Sets cell images, saves
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as? ColorCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
             cell.colors = colors[indexPath.row]
             cell.setImages(frame: cell.bounds, text: passedText!, font: passedFont!)
-            let _ = GifFactory.sharedInstance.saveGif(photos: cell.images, filename: "/gif\(indexPath.row).gif")
-            let gifView = GifFactory.sharedInstance.showGif(frame: cell.bounds, resourceName: "/gif\(indexPath.row).gif")
-            cell.addSubview(gifView!)
-            cell.bringSubviewToFront(gifView!)
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
-            gifView?.animationDuration = 3
-            gifView?.startAnimating()
             return cell
         } else {
-            return ColorCell()
+            return Cell()
         }
     }
+    
+    func cycleColors() {
+        let timer = Timer(timeInterval: 0.67, target: self, selector: #selector(selectNextColors), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer, forMode: .common)
+    }
+    
+    @objc func selectNextColors() {
+        let cells = self.collectionView.visibleCells as! [Cell]
+        cells.forEach { cell in
+            cell.pickNextColor()
+        }
+    }
+    
+    
     
     // Find gif, copy to pasteboard, alert success/failure
     @objc func cellTapped(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: collectionView)
         let indexPath = collectionView?.indexPathForItem(at: location)
+        let cell = collectionView?.cellForItem(at: indexPath!) as! Cell
+        let _ = GifFactory.sharedInstance.saveGif(photos: cell.images, filename: "/gif\(indexPath!.row).gif")
         let documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let path = documentsDirectoryPath.appending("/gif\(indexPath!.row).gif")
         let url = URL(fileURLWithPath: path)

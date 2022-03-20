@@ -23,99 +23,49 @@ class ColorFactory {
     static let sharedInstance: ColorFactory = ColorFactory()
     public var fontCellColors = (["text": UIColor.black, "background": UIColor.white])
     
-    public var generators: [() -> UIColor] = []
+    public var generators: [() -> [UIColor]] = []
     
     private init() {
-        self.generators = [
-            self.random,
-            self.randomNoRed,
-            self.randomNoGreen,
-            self.randomNoBlue,
-            self.randomZeroToHalf,
-            self.randomHalfToOne
+        generators = [
+            self.freshAndBright,
+            self.subduedAndProfessional,
+            self.brightAndTropical
         ]
     }
     
-    // Generates the [[UIColor]] used by the entire collection view to color cells
-    func makeAllCellColors(numColorsPerCell: Int) -> [[UIColor]] {
+    func makeAllCellColors() -> [[UIColor]] {
         var colors: [[UIColor]] = []
-        self.generators.shuffle()
-        for i in 0..<ColorFactory.sharedInstance.generators.count {
-            let cellColors = makeCellColors(number: numColorsPerCell, generator: ColorFactory.sharedInstance.generators[i])
-            colors.append(cellColors)
+        for generator in generators {
+            let palette = generator()
+            colors.append(palette)
         }
         return colors
     }
     
-    // Generates one cell worth of colors (number = number of color combos)
-    func makeCellColors(number: Int, generator: () -> UIColor) -> [UIColor] {
+    func freshAndBright() -> [UIColor] {
         var colors: [UIColor] = []
-        for _ in 0..<number {
-            let newColor = generator()
-            colors.append(newColor)
-        }
+        colors.append(UIColor(red: 249/255, green: 136/255, blue: 102/255, alpha: 1))
+        colors.append(UIColor(red: 255/255, green: 66/255, blue: 14/255, alpha: 1))
+        colors.append(UIColor(red: 128/255, green: 189/255, blue: 158/255, alpha: 1))
+        colors.append(UIColor(red: 137/255, green: 218/255, blue: 89/255, alpha: 1))
         return colors
     }
     
-    // Generates truly random RGB values
-    func random() -> UIColor {
-        let randRed = CGFloat(Float.random(in: 0...255) / 255.0)
-        let randGreen = CGFloat(Float.random(in: 0...255) / 255.0)
-        let randBlue = CGFloat(Float.random(in: 0...255) / 255.0)
-        let alpha = 1.0
-        let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-        return color
-    }
-
-    // Generates random color with 0 in the R
-    func randomNoRed() -> UIColor {
-        let randRed = 0.0
-        let randGreen = CGFloat(Float.random(in: 0...255) / 255.0)
-        let randBlue = CGFloat(Float.random(in: 0...255) / 255.0)
-        let alpha = 1.0
-        let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-        return color
+    func subduedAndProfessional() -> [UIColor] {
+        var colors: [UIColor] = []
+        colors.append(UIColor(red: 144/255, green: 175/255, blue: 197/255, alpha: 1))
+        colors.append(UIColor(red: 51/255, green: 107/255, blue: 135/255, alpha: 1))
+        colors.append(UIColor(red: 42/255, green: 49/255, blue: 50/255, alpha: 1))
+        colors.append(UIColor(red: 118/255, green: 54/255, blue: 38/255, alpha: 1))
+        return colors
     }
     
-    // Generates random color with 0 in the G
-    func randomNoGreen() -> UIColor {
-        let randRed = CGFloat(Float.random(in: 0...255) / 255.0)
-        let randGreen = 0.0
-        let randBlue = CGFloat(Float.random(in: 0...255) / 255.0)
-        let alpha = 1.0
-        let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-        return color
+    func brightAndTropical() -> [UIColor] {
+        var colors: [UIColor] = []
+        colors.append(UIColor(red: 245/255, green: 37/255, blue: 73/255, alpha: 1))
+        colors.append(UIColor(red: 250/255, green: 103/255, blue: 117/255, alpha: 1))
+        colors.append(UIColor(red: 255/255, green: 214/255, blue: 77/255, alpha: 1))
+        colors.append(UIColor(red: 155/255, green: 192/255, blue: 28/255, alpha: 1))
+        return colors
     }
-    
-    // Generates random color with 0 in the B
-    func randomNoBlue() -> UIColor {
-        let randRed = CGFloat(Float.random(in: 0...255) / 255.0)
-        let randGreen = CGFloat(Float.random(in: 0...255) / 255.0)
-        let randBlue = 0.0
-        let alpha = 1.0
-        let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-        return color
-    }
-    
-    // Generates random color only using 1...127 / 255 in RGB scale
-    func randomZeroToHalf() -> UIColor {
-        let randRed = CGFloat(Float.random(in: 0...127) / 255.0)
-        let randGreen = CGFloat(Float.random(in: 0...127) / 255.0)
-        let randBlue = CGFloat(Float.random(in: 0...127) / 255.0)
-        let alpha = 1.0
-        let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-        return color
-    }
-    
-    // Generates random color only using 128...255 in RGB scale
-    func randomHalfToOne() -> UIColor {
-        let randRed = CGFloat(Float.random(in: 128...255) / 255.0)
-        let randGreen = CGFloat(Float.random(in: 128...255) / 255.0)
-        let randBlue = CGFloat(Float.random(in: 128...255) / 255.0)
-        let alpha = 1.0
-        let color = UIColor(red: randRed, green: randGreen, blue: randBlue, alpha: alpha)
-        return color
-    }
-    
-    
 }
