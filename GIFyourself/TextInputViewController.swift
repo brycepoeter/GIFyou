@@ -62,7 +62,7 @@ class TextInputViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: "fontsViewController") as! FontsViewController
-        nextVC.passedText = textField.text
+        nextVC.passedText = textField.text!
         self.navigationController?.pushViewController(nextVC, animated: true)
         print("TextInputVC sending text = \(textField.text?.debugDescription ?? "UNKNOWN") to FontsVC")
         return true

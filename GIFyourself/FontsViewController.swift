@@ -16,7 +16,7 @@ class FontsViewController: UIViewController {
      clicked on, text and font choice are passed to ColorsVC, where colors are
      picked and GIFs are made.
      */
-    var passedText: String?
+    var passedText: String = "No passed text"
     
     var collectionView: UICollectionView!
     var colors: [(UIColor, UIColor)] = []

@@ -21,8 +21,8 @@ class ColorsViewController: UIViewController {
      so users can paste them into chats.
      */
     
-    var passedText: String?
-    var passedFont: UIFont?
+    var passedText: String = "No passed text"
+    var passedFont: UIFont? = UIFont(name: "Lobster-Regular", size: 28)
     
     var collectionView: UICollectionView!
     var colors: [[UIColor]] = []
@@ -42,7 +42,8 @@ class ColorsViewController: UIViewController {
         self.collectionView.register(Cell.self, forCellWithReuseIdentifier: "cell")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.collectionView.backgroundColor = UIColor(white: 1, alpha: 0)
+        self.collectionView.layer.cornerRadius = 20
+        self.collectionView.backgroundColor = UIColor(white: 1, alpha: 1)
         
 
         // Place the collectionView in the viewController's view
@@ -63,8 +64,10 @@ class ColorsViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.pageTitle.bottomAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
+            self.collectionView.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.9),
+            self.collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+//            self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+//            self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
   }
     
@@ -88,7 +91,7 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Cell {
             cell.colors = colors[indexPath.row]
-            cell.setImages(frame: cell.bounds, text: passedText!, font: passedFont!)
+            cell.setImages(frame: cell.bounds, text: passedText, font: passedFont!)
             cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped(_:))))
             return cell
         } else {
@@ -133,11 +136,11 @@ extension ColorsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
                                                                              heightDimension: NSCollectionLayoutDimension.fractionalHeight(0.5)))
-            item.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 20)
+            item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),  heightDimension: .fractionalHeight(0.9))
             let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0)
             return section
         }
         return layout

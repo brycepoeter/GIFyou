@@ -17,6 +17,16 @@ extension UIColor {
      and its inverted color add up to r=1, g=1, etc. Alpha is kept at 1 for all.
      */
     
+    // Convenience to be able to use hex colors without converting manually
+    convenience init(hex: Int) {
+        self.init(
+            red: CGFloat((hex >> 16) & 0xFF) / 255,
+            green: CGFloat((hex >> 8) & 0xFF) / 255,
+            blue: CGFloat(hex & 0xFF) / 255,
+            alpha: 1
+        )
+    }
+    
     // Gets the rgba values from a specific color
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
@@ -35,5 +45,7 @@ extension UIColor {
         let newColor = UIColor(red: red, green: green, blue: blue, alpha: self.rgba.3)
         return newColor
     }
+    
+    
     
 }
