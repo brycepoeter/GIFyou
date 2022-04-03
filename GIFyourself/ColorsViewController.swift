@@ -66,8 +66,6 @@ class ColorsViewController: UIViewController {
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.widthAnchor.constraint(equalToConstant: self.view.bounds.width * 0.9),
             self.collectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-//            self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-//            self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
   }
     

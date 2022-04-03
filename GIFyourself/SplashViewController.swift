@@ -52,7 +52,6 @@ class SplashViewController: UIViewController {
     }
     
     func handleSettingsBundle() {
-//        UserDefaults.standard.set(nil, forKey: "Initial Launch")
         let firstOpened = UserDefaults.standard.string(forKey: "Initial Launch")
         if firstOpened == nil {
             let today = NSDate.now

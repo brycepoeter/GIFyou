@@ -33,12 +33,7 @@ class Cell: UICollectionViewCell {
 
         self.contentView.layer.cornerRadius = 20
         self.contentView.layer.masksToBounds = true
-//        self.contentView.widthAnchor.constraint(equalToConstant: (self.frame.width) * 0.9).isActive = true
-//        self.contentView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-//        self.contentView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor).isActive = true
-//        self.contentView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-//        self.contentView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
-
+        
         self.contentView.addSubview(self.textView)
         self.textView.textAlignment = .center
         self.textView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
