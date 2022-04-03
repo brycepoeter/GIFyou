@@ -80,6 +80,7 @@
 		68C27A0E27E37DEF007F2350 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		68CF443E27E3A1D800C73E72 /* brycepoeter_marketing.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = brycepoeter_marketing.pdf; sourceTree = "<group>"; };
 		68CF444027E3A98600C73E72 /* brycepoeter_executive.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = brycepoeter_executive.pdf; sourceTree = "<group>"; };
+		68CF444227FA32ED00C73E72 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 		689E56DF27D1739C00A44C2F = {
 			isa = PBXGroup;
 			children = (
+				68CF444227FA32ED00C73E72 /* README.md */,
 				689E56EA27D1739C00A44C2F /* GIFyourself */,
 				689E56E927D1739C00A44C2F /* Products */,
 			);
