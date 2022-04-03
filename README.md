@@ -1,6 +1,11 @@
 #  Create Colorful GIF Messages with GIFyou!
 
-Add some color and fun to your chats with GIFyou. 
+Add some color and fun to your chats with GIFyou.  
 
-<img width="157" alt="image" src="https://user-images.githubusercontent.com/52143620/161446129-37dfb65f-31e9-4307-b9ad-5c237817441b.png"> <img width="156" alt="image" src="https://user-images.githubusercontent.com/52143620/161446143-91b98955-0214-4beb-af56-0c807aa5413d.png">
+Simply enter text, choose a font, and choose a color scheme! The GIF is automatically copied to your pasteboard and ready to paste in chats.
+
+Coming soon to the App Store
+
+![image](https://user-images.githubusercontent.com/52143620/161446274-e652a275-3a0e-4cc3-8c06-1d6d0192fe2c.png) ![image](https://user-images.githubusercontent.com/52143620/161446262-7aff9ae7-a3f7-4234-83d1-dd8556b40eb0.png) ![image](https://user-images.githubusercontent.com/52143620/161446226-4427961a-d9d1-4897-b00a-1dc91602b9b1.png)
+
 
